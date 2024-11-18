@@ -1621,6 +1621,10 @@ valuetypes:
         doc: |
           Uses the inner torque loop, the velocity control loop, and the outer position control loop.
           Use `input_pos` to command desired position, `input_vel` to command velocity feed-forward, and `input_torque` for torque feed-forward.
+      POSITION_PD_CONTROL:
+        doc: |
+          Uses the inner torque loop, and a combined position and velocity control loop.
+          Use `input_pos` to command desired position, `input_torque` for torque feed-forward.
 
   ODrive.Controller.InputMode:
     values:
@@ -1639,6 +1643,7 @@ valuetypes:
           * `CONTROL_MODE_TORQUE_CONTROL`
           * `CONTROL_MODE_VELOCITY_CONTROL`
           * `CONTROL_MODE_POSITION_CONTROL`
+          * `CONTROL_MODE_POSITION_PD_CONTROL`
       VEL_RAMP:
         brief: Ramps a velocity command from the current value to the target value.
         doc: |

@@ -62,6 +62,7 @@ CONTROL_MODE_VOLTAGE_CONTROL             = 0
 CONTROL_MODE_TORQUE_CONTROL              = 1
 CONTROL_MODE_VELOCITY_CONTROL            = 2
 CONTROL_MODE_POSITION_CONTROL            = 3
+CONTROL_MODE_POSITION_PD_CONTROL         = 4
 
 # ODrive.Controller.InputMode
 INPUT_MODE_INACTIVE                      = 0
@@ -219,6 +220,7 @@ class ControlMode(enum.Enum):
     TORQUE_CONTROL                           = 1
     VELOCITY_CONTROL                         = 2
     POSITION_CONTROL                         = 3
+    POSITION_PD_CONTROL                      = 4
 class InputMode(enum.Enum):
     INACTIVE                                 = 0
     PASSTHROUGH                              = 1

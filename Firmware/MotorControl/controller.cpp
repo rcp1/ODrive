@@ -293,8 +293,8 @@ bool Controller::update() {
     // TODO Decide if we want to use encoder or pll position here
     float gain_scheduling_multiplier = 1.0f;
     float vel_des = vel_setpoint_;
+    float pos_err = 0.0f;
     if (config_.control_mode >= CONTROL_MODE_POSITION_CONTROL) {
-        float pos_err;
 
         if (config_.circular_setpoints) {
             if (!pos_estimate_circular.has_value() || !pos_wrap.has_value()) {
@@ -375,6 +375,12 @@ bool Controller::update() {
         if (!vel_estimate.has_value()) {
             set_error(ERROR_INVALID_ESTIMATE);
             return false;
+        }
+
+        // PD control: skip velocity setpoint
+        if (config_.control_mode == CONTROL_MODE_POSITION_PD_CONTROL) {
+          vel_des = 0.0f;
+          torque += config_.pos_gain * pos_err;
         }
 
         v_err = vel_des - *vel_estimate;

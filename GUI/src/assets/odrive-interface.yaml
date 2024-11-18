@@ -679,6 +679,7 @@ valuetypes:
       CurrentControl:
       VelocityControl:
       PositionControl:
+      PositionPDControl:
 
   ODrive.Controller.InputMode:
     values:
